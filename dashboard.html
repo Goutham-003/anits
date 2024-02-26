@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+     * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: -webkit-linear-gradient(to left, #f30303, #3f0aee);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f30303, #3f0aee);
+}
+
+
+.l-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px;
+}
+@media screen and (max-width: 760px) {
+  .l-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.b-game-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: 150%;
+  perspective: 1000px;
+}
+.b-game-card__cover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background-size: cover;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  transform-origin: top center;
+  will-change: transform;
+  transform: skewX(0.001deg);
+  transition: transform 0.35s ease-in-out;
+}
+.b-game-card__cover::after {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(226deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 35%, rgba(255, 255, 255, 0.2) 42%, rgba(255, 255, 255, 0) 60%);
+  transform: translateY(-20%);
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.18, 0.9, 0.58, 1);
+}
+.b-game-card:hover .b-game-card__cover {
+  transform: rotateX(7deg) translateY(-6px);
+}
+.b-game-card:hover .b-game-card__cover::after {
+  transform: translateY(0%);
+}
+.b-game-card::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px 12px rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+  transform-origin: top center;
+  transform: skewX(0.001deg);
+  transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
+}
+.b-game-card:hover::before {
+  opacity: 0.6;
+  transform: rotateX(7deg) translateY(-6px) scale(1.05);
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  background-color:rgb(0,0,0,1.5);
+    position: fixed;
+    top:0;
+    width: 100%;
+    font-size: 20px;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+    background-color: black;
+  color: rgb(178, 175, 175);
+}
+
+.topnav-right {
+  float: right;
+}
+    </style>
+ 
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+</head>
+<body>
+<div class="topnav">
+  <a  href="../pages/index.html">INVENTUM</a>
+  
+  <div class="topnav-right">
+    <a href="../pages/index.html">Back</a>
+  </div>
+</div>
+
+<div class="l-container">
+    <a href="../pages/gallery.html"> <div class="b-game-card">
+       <div class="b-game-card__cover" style="background-image: url(../images/gallery1.jpg);"></div>
+     </div></a>
+    <a href="../pages/tech.html"> <div class="b-game-card">
+       <div class="b-game-card__cover" style="background-image: url(../images/tech_event1.jpg);"></div>
+     </div></a>
+    <a href="../pages/talent.html"><div class="b-game-card">
+       <div class="b-game-card__cover" style="background-image: url(../images/nontech.png);"></div>
+     </div></a>
+    <a href="../pages/contact.html"><div class="b-game-card">
+       <div class="b-game-card__cover" style="background-image: url(../images/help1.jpg);"></div>
+     </div></a>
+   </div>
+</body>
+</html>
